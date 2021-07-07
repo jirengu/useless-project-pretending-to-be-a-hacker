@@ -10,7 +10,11 @@ body {
 }
 
 .hide {
-  display: none;
+  display: none!important;
+}
+
+.show {
+  display: block!important;
 }
 
 .button {
@@ -37,6 +41,7 @@ body {
   background-color: #000;
   width: 550px;
   padding: 10px;
+  display: none;
 }
 
 #modal .copyright {
@@ -52,6 +57,7 @@ body {
   text-align: center;
   padding: 20px 0;
   width: 300px;
+  display: none;
 }
 
 .popup.access-denied {
@@ -69,7 +75,11 @@ body {
 #code {
   padding: 0 10px 10px 40px;
   flex: 1;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+
+#code::-webkit-scrollbar {
+  width: 0;
 }
 
 @keyframes twinkle {

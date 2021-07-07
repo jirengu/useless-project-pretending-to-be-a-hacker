@@ -4,10 +4,10 @@ const $$ = selector => document.querySelectorAll(selector)
 $('#modal .button').onclick = function() {
   $('#modal').classList.add('hide')
   $('#code pre').classList.add('ready')
+  toggleFullScreen()
 }
 
 document.onkeypress = function(e) {
-  console.log(e)
   if(e.key === '0') {
     $('.access-denied').classList.remove('hide')
     isReady = false
@@ -19,8 +19,11 @@ document.onkeypress = function(e) {
       $popup.classList.add('hide')
       isReady = true
     })
-  } else if(e.key === 'h' && e.ctrlKey) {
-    location.href = 'https://github.com/deptofdefense/scan-alb-logs/blob/main/scripts/scan-alb-logs'
+  } else if(e.key === '9'){
+    toggleFullScreen()
+  }else if(e.key === 'h') {
+    $('#modal').classList.remove('hide')
+    $('#code pre').classList.remove('ready')
   } else if(isReady && cursor <= text.length) {
     $('#code pre').innerText = text.substr(0, cursor)
     cursor+=3
@@ -41,3 +44,12 @@ fetch('https://raw.githubusercontent.com/deptofdefense/scan-alb-logs/main/script
     isReady = true
   })
 
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}
